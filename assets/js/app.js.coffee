@@ -122,7 +122,8 @@ walletApp.config ($numeraljsConfigProvider, $modalProvider, uiSelectConfig) ->
 # walletApp.config ($sceProvider) ->
 #   $sceProvider.enabled(false);
 
-Offline.options = { checks: { xhr: { url: 'https://blockchain.info/ping' }}}
+if Offline?
+  Offline.options = { checks: { xhr: { url: 'https://blockchain.info/ping' }}}
 
 walletApp.run ($rootScope, $modal) ->
   $rootScope.$safeApply = (scope=$rootScope) ->
