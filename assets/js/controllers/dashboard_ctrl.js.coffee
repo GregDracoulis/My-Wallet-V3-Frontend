@@ -2,7 +2,7 @@ walletApp.controller "DashboardCtrl", ($scope, Wallet, $log, $modal) ->
   $scope.accounts = Wallet.accounts
   $scope.status = Wallet.status
   $scope.paymentRequestAddress = null
-  $scope.doughnutData = []
+  # $scope.doughnutData = []
 
   $scope.setPaymentRequestURL = (address, amount) ->
     $scope.paymentRequestAddress = address
@@ -35,7 +35,13 @@ walletApp.controller "DashboardCtrl", ($scope, Wallet, $log, $modal) ->
       windowClass: "bc-modal rocket-modal"
     )
 
-  $scope.labels = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
-  $scope.data = [300, 500, 100];
+  $scope.labels = ['Download Sales', "In-Store Sales", "Mail-Order Sales"]
+  $scope.data = [300, 500, 100]
+
+
+
+
+  
+
 
 
