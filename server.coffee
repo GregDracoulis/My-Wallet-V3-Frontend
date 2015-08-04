@@ -254,7 +254,7 @@ app.get "/authorize-approve", (request, response) ->
 <!doctype html>
 <html>
   <head>
-    <meta `set="utf-8">
+    <meta charset="utf-8">
     <title>Verifying authorization request</title>
     <script>
       var xmlHttp = new XMLHttpRequest();
