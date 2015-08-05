@@ -1,8 +1,7 @@
 walletApp.controller "DashboardCtrl", ($scope, Wallet, $log, $modal) ->
   $scope.accounts = Wallet.accounts
   $scope.status = Wallet.status
-  $scope.paymentRequestAddress = null
-  # $scope.doughnutData = []
+  $scope.paymentRequestAddress = null  
 
   $scope.setPaymentRequestURL = (address, amount) ->
     $scope.paymentRequestAddress = address
@@ -16,13 +15,16 @@ walletApp.controller "DashboardCtrl", ($scope, Wallet, $log, $modal) ->
     $scope.setPaymentRequestURL(receiveAddress)
 
   $scope.updateDoughnutChart = () ->
-    console.log $scope.accounts().map((account) -> 
-      return account.balance
+    $scope.accounts().map((account) -> 
+      if account.balance?
+        return account.balance
     )
 
   $scope.$watchCollection 'accounts()', () ->
     $scope.updatePaymentInfo()
-    $scope.updateDoughnutChart()
+    $scope.data = $scope.updateDoughnutChart()
+    if $scope.data.length < 3
+      $scope.data.push 0
     return
 
   if $scope.status.firstTime
@@ -36,12 +38,5 @@ walletApp.controller "DashboardCtrl", ($scope, Wallet, $log, $modal) ->
     )
 
   $scope.labels = ['Download Sales', "In-Store Sales", "Mail-Order Sales"]
-  $scope.data = [300, 500, 100]
-
-
-
-
+  $scope.options = showTooltips : true # (2) NOT WORKING AS OF YET...TODO:LABELS
   
-
-
-
