@@ -37,6 +37,5 @@ walletApp.controller "DashboardCtrl", ($scope, Wallet, $log, $modal) ->
       windowClass: "bc-modal rocket-modal"
     )
 
-  $scope.labels = ['Download Sales', "In-Store Sales", "Mail-Order Sales"]
   $scope.options = showTooltips : true # (2) NOT WORKING AS OF YET...TODO:LABELS
   
