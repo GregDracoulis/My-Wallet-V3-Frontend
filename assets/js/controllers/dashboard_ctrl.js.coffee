@@ -1,12 +1,8 @@
 walletApp.controller "DashboardCtrl", ($scope, Wallet, $log, $modal) ->
   $scope.accounts = Wallet.accounts
   $scope.status = Wallet.status
-<<<<<<< Updated upstream
-  $scope.paymentRequestAddress = null  
-=======
   $scope.paymentRequestAddress = null
   $scope.array = []
->>>>>>> Stashed changes
 
   $scope.setPaymentRequestURL = (address, amount) ->
     $scope.paymentRequestAddress = address
@@ -22,22 +18,12 @@ walletApp.controller "DashboardCtrl", ($scope, Wallet, $log, $modal) ->
   $scope.updateDoughnutChart = () ->
     $scope.accounts().map((account) -> 
       if account.balance?
-<<<<<<< Updated upstream
-        return account.balance
-=======
         $scope.array.push([account.label, account.balance])
         return account.label + account.balance
->>>>>>> Stashed changes
     )
 
   $scope.$watchCollection 'accounts()', () ->
     $scope.updatePaymentInfo()
-<<<<<<< Updated upstream
-    $scope.data = $scope.updateDoughnutChart()
-    if $scope.data.length < 3
-      $scope.data.push 0
-    return
-=======
     console.log $scope.data = $scope.updateDoughnutChart()
     console.log $scope.array
     if $scope.data.length < 3
@@ -47,7 +33,6 @@ walletApp.controller "DashboardCtrl", ($scope, Wallet, $log, $modal) ->
 
   $scope.$watchCollection 'array', () ->
     $scope.draw()
->>>>>>> Stashed changes
 
   if $scope.status.firstTime
     modalInstance = $modal.open(
@@ -59,10 +44,6 @@ walletApp.controller "DashboardCtrl", ($scope, Wallet, $log, $modal) ->
       windowClass: "bc-modal rocket-modal"
     )
 
-<<<<<<< Updated upstream
-  $scope.options = showTooltips : true # (2) NOT WORKING AS OF YET...TODO:LABELS
-  
-=======
   $scope.draw = () ->
     # Create the chart
     chart = new (Highcharts.Chart)(
@@ -86,4 +67,3 @@ walletApp.controller "DashboardCtrl", ($scope, Wallet, $log, $modal) ->
         enabled: false
         })
     return
->>>>>>> Stashed changes
