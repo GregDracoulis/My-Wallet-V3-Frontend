@@ -29,7 +29,7 @@ module.exports = function(config){
       'tests/**/*.js',
       'app/templates/*.jade',
       'bower_components/angular-password-entropy/password-entropy.js',
-      'bower_components/highcharts-ng/dist/highcharts-ng.js',
+      'bower_components/highcharts-ng/dist/highcharts-ng.js'
     ],
 
     autoWatch : true,

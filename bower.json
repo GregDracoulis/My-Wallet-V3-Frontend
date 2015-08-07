@@ -29,7 +29,8 @@
     "bootstrap": "~3.3.4",
     "highstock-release": "~2.1.7",
     "highcharts-release": "~4.1.7",
-    "highcharts": "~4.1.7"
+    "highcharts": "~4.1.7",
+    "highcharts-ng": "~0.0.8"
   },
   "devDependencies": {
     "angular-local-storage": "~0.1.5"
