@@ -13,6 +13,8 @@ modules = [
   "ui.bootstrap"
   "ngCookies"
   "ngAnimate"
+  "highcharts-ng"
+
 
   # TODO get rid of these wrappers and modify the original files to work with injection?
   "myWalletServices"
