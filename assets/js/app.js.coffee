@@ -122,15 +122,15 @@ walletApp.config ($numeraljsConfigProvider, $modalProvider, uiSelectConfig) ->
 # walletApp.config ($sceProvider) ->
 #   $sceProvider.enabled(false);
 
-if Offline?
-  console.log "configuring offline"
-  Offline.options = {
-    checkOnLoad: true
-    interceptRequests: true
-    reconnect: { initialDelay: 2 }
-    requests: true
-    checks: { xhr: { url: 'https://blockchain.info/ping' }}
-  }
+# if Offline?
+#   console.log "configuring offline"
+#   Offline.options = {
+#     checkOnLoad: true
+#     interceptRequests: true
+#     reconnect: { initialDelay: 2 }
+#     requests: true
+#     checks: { xhr: { url: 'https://blockchain.info/ping' }}
+#   }
 
 walletApp.run ($rootScope, $modal) ->
   $rootScope.$safeApply = (scope=$rootScope) ->
