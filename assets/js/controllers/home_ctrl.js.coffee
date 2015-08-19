@@ -1,4 +1,4 @@
-walletApp.controller "HomeCtrl", ($scope, $window, Wallet, $modal) ->
+walletApp.controller "HomeCtrl", ($scope, $window, Wallet, $modal, $http) ->
   $scope.accounts = Wallet.accounts
   $scope.status = Wallet.status
   $scope.settings = Wallet.settings
@@ -7,6 +7,7 @@ walletApp.controller "HomeCtrl", ($scope, $window, Wallet, $modal) ->
   $scope.transactions = []
 
   $scope.pieChartData = { data: [] }
+  $scope.historicalBalanceData = []
 
   $scope.pieChartConfig = {
     colors: [ 'RGB(96, 178, 224)','RGB(223, 39, 22)', 'RGB(74, 198, 171)', 'RGB(244, 189, 57)',
@@ -21,6 +22,14 @@ walletApp.controller "HomeCtrl", ($scope, $window, Wallet, $modal) ->
     }
     waitForHeightAndWidth: true
   }
+
+  $scope.getHistoricalBalance = () ->
+    endpoint = '/balance-over-time'
+    endpoint += $scope.accounts().reduce (prev, current) ->
+      return prev + current.extendedPublicKey + '|'
+    , '?addresses='
+    $http.get(endpoint).then (response) ->
+      $scope.historicalBalanceData = response.data
 
   # accountData helper functions
   $scope.convertToDisplay = (amount) ->
