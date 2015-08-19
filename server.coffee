@@ -242,6 +242,18 @@ else
     else
       response.render "app/index.jade"
 
+# TODO: replace with actual endpoint on a "real" backend
+app.get "/balance-over-time", (req, res) ->
+  addresses = req.query.addresses
+  reqURL = 'https://blockchain.info/charts/balance?show_header=false&address=' + addresses
+  r reqURL, (err, resp, body) ->
+    try
+      chartData = body.split('data: ')[1].split('showInLegend: ')[0].trim().slice(0, -1)
+      formatted = JSON.parse(chartData).map (p) -> { time: p[0], value: p[1] }
+      res.json(formatted)
+    catch error
+      res.json({ error: 'Exception occurred while retrieving chart data' })
+
 # /verify-email?token=$token sends a request to blockchain.info and redirects to login
 app.get "/verify-email", (request, response) ->
   r.get 'https://blockchain.info/wallet' + request.originalUrl
