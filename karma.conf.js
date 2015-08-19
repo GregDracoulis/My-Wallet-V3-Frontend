@@ -30,7 +30,8 @@ module.exports = function(config){
       'app/templates/*.jade',
       'bower_components/angular-password-entropy/password-entropy.js',
       'bower_components/d3/d3.js',
-      'bower_components/angular-charts/dist/angular-charts.js'
+      'bower_components/nvd3/nv.d3.js',
+      'bower_components/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.js'
     ],
 
     autoWatch : true,

@@ -558,6 +558,7 @@
   "SIGNIN": "Sign in",
   "SIGNOUT": "Sign out",
   "EDIT_NOTE": "Edit",
-  "DELETE_NOTE": "Delete"
+  "DELETE_NOTE": "Delete",
+  "VALUE_OVER_TIME": "Value Over Time"
 
 }

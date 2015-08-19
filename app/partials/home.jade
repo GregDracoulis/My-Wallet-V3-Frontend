@@ -6,17 +6,21 @@
       .section
         did-you-know
       .section
-        .charts.hidden-xs.pos-rel
-          h5.aaa.em-400.mbl(ng-class="{'mts' : transactions.length > 0 }" translate="BALANCE_BY_ACCOUNT")
-          .widget.flex-center.flex-justify.pos-rel(ng-class="{ 'empty' : accounts().length == 1 || getTotal() == 0 }")
-            button.button-sm.em-500(ng-click="newAccount()" ng-class="accounts().length > 1 ? 'button-gradient' : 'button-primary'" translate="NEW_ACCOUNT")
-            h5.width-75.center-align.em-300(translate="HOME_NEW_ACCOUNT_MSG" ng-hide="accounts().length > 1")
-            h5.width-75.center-align.em-300(ng-show="accounts().length > 1 && getTotal() == 0" translate="ALT_EMPTY_MSG")
-            .pos-abs-chart(ng-hide="accounts().length > 1")
-              .empty-state-chart
-            #chart.chart(
-              ac-chart="'pie'"
-              ac-data="pieChartData"
-              ac-config="pieChartConfig"
-              ng-show="accounts().length > 1 && getTotal() > 0"
+        .chart.hidden-xs.pos-rel
+          h5.aaa.em-400.mbl(ng-class="{'mts' : transactions.length > 0 }" translate="VALUE_OVER_TIME")
+          .widget.pam.pos-rel
+            .empty-state.pam.flex-column.flex-center(ng-show="transactions.length > 0")
+              i.ti-stats-up.h2
+              h3 No Balance Yet!
+              p.center-align We'll start tracking your value after you've received bitcoin into your wallet
+            p.chart-label.em-700.type-sm(ng-hide="transactions.length > 0")
+            nvd3-stacked-area-chart(
+              data="exampleData"
+              width="450"
+              height="275"
+              showXAxis="true"
+              showYAxis="true"
+              color="chartColor()"
+              xAxisTickFormat="xAxisTickFormat()"
+              ng-hide="transactions.length > 0"
             )

@@ -32,32 +32,17 @@
   h5 { z-index: 10; }
 }
 
-//hack absolute positioning center
-.pos-abs-chart {
-  position: absolute;
-  left: 50%;
-  top: 15%;
-}
-.empty-state-chart {
-  height: 200px;
-  width: 200px;
-  border: 30px solid #E7E7E7;
-  border-radius: 100%;
-  position: relative;
-  left: -50%;
-}
+//chart stuff, scope to avoid collision
 .chart {
-  height: 225px;
-  width: 425px;
-  position: relative;
-}
-// overrides for angular-chart(s)
-.ac-legend td { padding: 2px 5px; }
-
-@media (min-width: 990px) and (max-width: 1072px) {
-  .ac-legend td { font-size: .8em; }
-}
-
-@media (max-width: 478px) {
-  .ac-legend td { font-size: .8em; }
+  .chart-label {
+    position: absolute;
+    text-transform: uppercase;
+    border-bottom: 1px solid #aaa;
+  }
+  .empty-state { background: $light-grey-alt; min-height: 240px; }
+  svg {
+    text { fill: #ccc; }
+  }
+  .nvd3 .nv-axis path { stroke: #eee; }
+  .nvd3 .nv-axis line { opacity: .4; }
 }

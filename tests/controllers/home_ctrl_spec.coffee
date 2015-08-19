@@ -48,6 +48,7 @@ describe "HomeCtrl", ->
   describe "account functions", ->
 
     it "should get account data", ->
+      pending()
       expect(scope.accountData(4).length).toEqual(2)
 
   describe "newAccount()", ->
