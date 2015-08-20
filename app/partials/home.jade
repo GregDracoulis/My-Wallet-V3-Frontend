@@ -5,22 +5,28 @@
     .col-md-6.col-sm-12.col-xs-12.col-home
       .section
         did-you-know
-      .section
+      .section.mtvl
         .chart.hidden-xs.pos-rel
           h5.aaa.em-400.mbl(ng-class="{'mts' : transactions.length > 0 }" translate="VALUE_OVER_TIME")
           .widget.pam.pos-rel
-            .empty-state.pam.flex-column.flex-center(ng-show="transactions.length > 0")
+            .flex-center.flex-justify.flex-column.width-100(ng-show="loading")
+              img(src="img/spinner.gif")
+            .empty-state.pam.flex-column.flex-center(ng-hide="loading || transactions.length > 0")
               i.ti-stats-up.h2
               h3 No Balance Yet!
               p.center-align We'll start tracking your value after you've received bitcoin into your wallet
-            p.chart-label.em-700.type-sm(ng-hide="transactions.length > 0")
-            nvd3-stacked-area-chart(
-              data="exampleData"
-              width="450"
-              height="275"
+            p.chart-label.em-700.type-sm(ng-show="!loading && transactions.length > 0")
+            nvd3-line-chart(
+              data="historicalBalanceData"
+              width="520"
+              height="310"
               showXAxis="true"
               showYAxis="true"
               color="chartColor()"
-              xAxisTickFormat="xAxisTickFormat()"
-              ng-hide="transactions.length > 0"
+              xAxisTickFormat="xAxisTickFormatFunction()"
+              yAxisTickFormat="yAxisTickFormatFunction()"
+              isArea="true"
+              interactive="true"
+              noData="Sorry, we're having trouble loading your data"
+              ng-show="transactions.length > 0"
             )

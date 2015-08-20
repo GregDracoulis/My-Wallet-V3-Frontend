@@ -1,7 +1,5 @@
 .home { padding: 10px 15px 0 30px; }
 .col-home { height: 635px; }
-.section { height: 50%; }
-
 .hashtag {
   &.feature {
     color: $blue;
@@ -16,7 +14,6 @@
     &:hover { color: $educational; }
   }
 }
-
 .widget {
   padding: 1em;
   border: 1px solid #eee;
@@ -31,7 +28,6 @@
   }
   h5 { z-index: 10; }
 }
-
 //chart stuff, scope to avoid collision
 .chart {
   .chart-label {
