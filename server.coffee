@@ -249,7 +249,7 @@ app.get "/balance-over-time", (req, res) ->
   r reqURL, (err, resp, body) ->
     try
       chartData = body.split('data: ')[1].split('showInLegend: ')[0].trim().slice(0, -1)
-      formatted = JSON.parse(chartData).map (p) -> { time: p[0], value: p[1] }
+      formatted = JSON.parse(chartData)
       res.json(formatted)
     catch error
       res.json({ error: 'Exception occurred while retrieving chart data' })
