@@ -17,7 +17,13 @@ walletApp.controller "HomeCtrl", ($scope, $window, Wallet, $modal, $http) ->
       return prev + current.extendedPublicKey + '|'
     , '?addresses='
     $http.get(endpoint).then (response) ->
-      $scope.historicalBalanceData[0].values = response.data
+      $scope.updateChart(response.data)
+
+  $scope.updateChart = (data) ->
+    $scope.historicalBalanceData = [{
+      key: 'Balance Over Time'
+      values: data
+    }]
 
   $scope.chartColor = () ->
     return (d, i) ->
@@ -41,7 +47,7 @@ walletApp.controller "HomeCtrl", ($scope, $window, Wallet, $modal, $http) ->
     $scope.getHistoricalBalance()
     loadedBalances()
     $scope.loading = false
-  
+
   # Modals
   $scope.newAccount = () ->
     modalInstance = $modal.open(
