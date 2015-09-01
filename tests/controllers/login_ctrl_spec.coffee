@@ -1,4 +1,4 @@
-ddescribe "LoginCtrl", ->
+describe "LoginCtrl", ->
   scope = undefined
 
   modal =

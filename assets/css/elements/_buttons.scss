@@ -35,6 +35,7 @@ button[disabled] {
       background: $background;
       color: $color;
       max-width: $max-width;
+      max-height: 40px;
       &:hover {
         background: darken($background, 5%);
         color: $color;
@@ -70,7 +71,9 @@ button[disabled] {
 .button-lg {
   padding: 1em 2em;
   font-size: 1.2em;
+  max-height: none;
 }
+
 .button-muted {
   border: none;
   background: transparent;
