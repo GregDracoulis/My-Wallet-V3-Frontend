@@ -578,6 +578,7 @@
   "YOUR_REC_PASS_EXPLAIN": "Enter your 12 recovery words with spaces to recover your funds & transactions",
   "RESTORE_SUCCESSFUL": "Restore Successful",
   "REDIRECTING": "We're redirecting you to your wallet now!",
+  "SENT_EMAIL_RECOVER": "We've sent an email to your verified address. The series of numbers and dashes at the end of the Login Link is your ID.",
   "ALPHA_WARNING": "Please note, this is an Alpha of a new product. Please do not test this wallet with more funds than you are willing to lose."
 
 }

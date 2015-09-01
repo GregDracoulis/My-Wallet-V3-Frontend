@@ -65,36 +65,36 @@ walletApp.controller "RecoveryCtrl", ($scope, $rootScope, Wallet, $state, $trans
   $scope.fields = {email: "", password: "", confirmation: "", mnemonic: "", bip39phrase: ""}
   $scope.errors = {email: null, password: null, confirmation: null}
   $scope.success = {email: false, password: false, confirmation: false}
-  $scope.isValid = [true, true]
+  $scope.isValid = true
 
   if $scope.fields.email == ""
-    $scope.isValid[0] = false
+    $scope.isValid = false
     $translate("EMAIL_ADDRESS_REQUIRED").then (translation) ->
       $scope.errors.email = translation
-  else if $scope.form && $scope.form.$error.email
-    $scope.isValid[0] = false
+  else if $scope.recoveryForm && $scope.recoveryForm.$error.email
+    $scope.isValid = false
     $translate("EMAIL_ADDRESS_INVALID").then (translation) ->
       $scope.errors.email = translation
   else
      $scope.success.email = true
 
-  if $scope.form && $scope.form.$error
-    if $scope.form.$error.minEntropy
-      $scope.isValid[0] = false
+  if $scope.recoveryForm && $scope.recoveryForm.$error
+    if $scope.recoveryForm.$error.minEntropy
+      $scope.isValid = false
       $translate("TOO_WEAK").then (translation) ->
         $scope.errors.password =  translation
-    if $scope.form.$error.maxlength
-      $scope.isValid[0] = false
+    if $scope.recoveryForm.$error.maxlength
+      $scope.isValid = false
       $translate("TOO_LONG").then (translation) ->
         $scope.errors.password =  translation
 
   if $scope.fields.confirmation == ""
-    $scope.isValid[0] = false
+    $scope.isValid = false
   else
     if $scope.fields.confirmation == $scope.fields.password
       $scope.success.confirmation = true
     else
-      $scope.isValid[0] = false
+      $scope.isValid = false
       if visual
         $translate("NO_MATCH").then (translation) ->
           $scope.errors.confirmation = translation

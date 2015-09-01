@@ -7,6 +7,7 @@ walletApp.controller "LoginCtrl", ($scope, $rootScope, $log, $http, Wallet, $coo
 
   $scope.status.enterkey = false
   $scope.status.needsHelp = false
+  $scope.status.emailSent = false
   $scope.key = $cookieStore.get("key")
 
   $scope.errors = {uid: null, password: null, twoFactor: null}
@@ -15,6 +16,7 @@ walletApp.controller "LoginCtrl", ($scope, $rootScope, $log, $http, Wallet, $coo
 
   $scope.toggleHelp = ->
     $scope.status.needsHelp = !$scope.status.needsHelp
+    $scope.status.emailSent = false
 
   # Browser compatibility warnings:
   # * Secure random number generator: https://developer.mozilla.org/en-US/docs/Web/API/RandomSource/getRandomValues
@@ -131,6 +133,10 @@ walletApp.controller "LoginCtrl", ($scope, $rootScope, $log, $http, Wallet, $coo
 
   $scope.recoverFunds = () ->
     $state.go("recover")
+
+  $scope.resendEmail = () ->
+    $scope.status.emailSent = true
+    # actually send the email now
 
   $scope.register = () ->
     betaCheckFinished = (key, email) ->
