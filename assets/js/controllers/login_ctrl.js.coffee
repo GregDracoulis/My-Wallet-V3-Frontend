@@ -1,15 +1,20 @@
 walletApp.controller "LoginCtrl", ($scope, $rootScope, $log, $http, Wallet, $cookieStore, $modal, $state, $timeout, $translate, filterFilter) ->
   $scope.status = Wallet.status
   $scope.settings = Wallet.settings
+  $scope.user = Wallet.user
 
   $scope.disableLogin = null
 
   $scope.status.enterkey = false
+  $scope.status.needsHelp = false
   $scope.key = $cookieStore.get("key")
 
   $scope.errors = {uid: null, password: null, twoFactor: null}
 
   $scope.uidAvailable = $cookieStore.get('uid')?
+
+  $scope.toggleHelp = ->
+    $scope.status.needsHelp = !$scope.status.needsHelp
 
   # Browser compatibility warnings:
   # * Secure random number generator: https://developer.mozilla.org/en-US/docs/Web/API/RandomSource/getRandomValues

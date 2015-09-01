@@ -1,4 +1,4 @@
-describe "LoginCtrl", ->
+ddescribe "LoginCtrl", ->
   scope = undefined
 
   modal =
@@ -45,3 +45,8 @@ describe "LoginCtrl", ->
     expect(Wallet.resendTwoFactorSms).toHaveBeenCalled()
     return
   )
+
+  it "should allow me to toggle help option",  ->
+    spyOn(scope, "toggleHelp")
+    scope.toggleHelp()
+    expect(scope.toggleHelp).toHaveBeenCalled()
