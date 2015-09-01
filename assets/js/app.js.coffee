@@ -48,6 +48,7 @@ modules = [
   "partials/login.jade"
   "partials/navigation.jade"
   "partials/open-link.jade"
+  "partials/recover-funds.jade"
   "partials/request.jade"
   "partials/second-password.jade"
   "partials/send.jade"

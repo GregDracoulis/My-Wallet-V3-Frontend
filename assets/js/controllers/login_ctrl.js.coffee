@@ -129,6 +129,9 @@ walletApp.controller "LoginCtrl", ($scope, $rootScope, $log, $http, Wallet, $coo
     else
       $scope.register()
 
+  $scope.recoverFunds = () ->
+    $state.go("recover")
+
   $scope.register = () ->
     betaCheckFinished = (key, email) ->
       $rootScope.beta = {key: $scope.key, email: email}
