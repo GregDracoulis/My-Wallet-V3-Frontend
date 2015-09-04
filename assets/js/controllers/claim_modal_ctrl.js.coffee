@@ -16,10 +16,17 @@ walletApp.controller "ClaimModalCtrl", ($scope, Wallet, $translate, $modalInstan
     success = () ->
       $scope.redeeming = false
       $modalInstance.dismiss ""
+      Wallet.beep()
+
       
     error = () ->
       $scope.redeeming = false
       
     $scope.redeeming = true
-      
+
     Wallet.redeemFromEmailOrMobile($scope.fields.to, claim.code, success, error)
+
+    # console.log("who are you: " + claim.code)
+    # new Wallet.spender().fromPrivateKey(claim.code).toAccount(Wallet.getDefaultAccountIndex()).publish(null,null)
+    #          .then(success)
+    #          .catch(error)
