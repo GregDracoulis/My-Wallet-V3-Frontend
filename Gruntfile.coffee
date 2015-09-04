@@ -280,6 +280,12 @@ module.exports = (grunt) ->
         options:
           spawn: false
 
+      es6:
+        files: ['assets/js/**/*.js.es6']
+        tasks: ['babel:build']
+        options:
+          spawn: false
+
       locales:
         files: ['locales/*.json']
         tasks: ['merge-json']
@@ -294,6 +300,13 @@ module.exports = (grunt) ->
           "build/admin.html": "app/admin.jade"
           "build/index.html": "app/index.jade"
 
+    babel:
+      options:
+        sourceMap: true
+      build:
+        src:
+          'assets/js/**/*.js'
+        dest: 'build/js/es5.js'
 
     rename:
       assets: # Renames all images, fonts, etc and updates application.min.js, application.css and admin.html with their new names.
@@ -475,12 +488,14 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks('grunt-autoprefixer')
   grunt.loadNpmTasks('grunt-merge-json')
   grunt.loadNpmTasks('git-changelog')
+  grunt.loadNpmTasks('grunt-babel')
 
   grunt.registerTask "compile", ["coffee"]
 
   grunt.registerTask "build", [
     "html2js"
     "compile"
+    "babel:build"
     "sass"
     "copy:css"
     "copy:fonts"
